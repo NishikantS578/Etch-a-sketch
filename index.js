@@ -25,14 +25,14 @@ function renderWorksheet()
             pixel[i][j].classList.add("pixel")
             pixel[i][j].addEventListener("mouseover",function(e)
             {
-
-                console.log(e.target.style.background)
-                    r =(r+25);
-                    if(r>250)
-                    {
-                        r=0
-                    }
-                    e.target.style.background="rgb("+r.toString()+","+r.toString()+","+r.toString()+")";
+                r=Number(e.target.style.background.slice(4,e.target.style.background.search(",")))-255/10
+                if(!e.target.style.background)
+                {
+                    r=255-255/10
+                }
+                e.target.style.background="rgb("+r.toString()+","+r.toString()+","+r.toString()+")";
+                console.log(r)
+                console.log(e.target.style.background.slice(4,e.target.style.background.search(",")))
             })
         }
     }
